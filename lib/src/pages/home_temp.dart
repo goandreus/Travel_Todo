@@ -41,7 +41,7 @@ List<Widget> _crearItemsCorta(){
             title: Text( item + '!'),
             subtitle: Text('Hola como esta'),
             leading: Icon(Icons.accessibility_new),
-            trailing: Icon(Icons.arrow_downward),
+            trailing: Icon(Icons.arrow_forward),
             onTap: (){},
           ),
           Divider()
