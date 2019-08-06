@@ -8,7 +8,7 @@ class HomePageTemp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Componentes Temp"),
+        title: Text("Componentes"),
       ),
       body: ListView(
        // children: _crearItems()
