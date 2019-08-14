@@ -5,7 +5,7 @@ class AvatarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('alert page'),
+        title: Text('avatar page'),
       ),
     );
   }
