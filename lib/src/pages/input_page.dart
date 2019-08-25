@@ -11,6 +11,10 @@ class _InputPageState extends State<InputPage> {
   String _email = '';
   String _fecha = '';
 
+  String _opcionesSeleccionada = 'Cajamarca';
+
+  List<String> _lugares = ['Cuzco','Cajamarca','Junin','Tacna','Arequipa'];
+
   TextEditingController _inputFieldDateController = TextEditingController();
 
   @override
@@ -30,6 +34,8 @@ class _InputPageState extends State<InputPage> {
           _crearPassword(),
           Divider(),
           _crearFecha(context),
+          Divider(),
+          _crearDropdown(),
           Divider(),
           _crearPersona(),
         ],
@@ -60,8 +66,39 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
+  List<DropdownMenuItem<String>> getOpcionesDropdown() {
+    List<DropdownMenuItem<String>> lista = List ();
+
+    _lugares.forEach((lugar){
+      lista.add(DropdownMenuItem(
+          child: Text(lugar),
+          value: lugar,
+      ));
+    });
+    
+    return lista;
+  }
 
 
+  Widget _crearDropdown(){
+
+    return Row(
+    children: <Widget>[
+      Icon(Icons.select_all),
+      SizedBox(width: 30.0,),
+      DropdownButton(
+      value: _opcionesSeleccionada,
+      items: getOpcionesDropdown(),
+      onChanged: (opt){
+        setState(() {
+         _opcionesSeleccionada = opt; 
+        });
+      },
+    )
+    ],);
+
+     
+  }
 
   Widget _crearFecha(BuildContext context){
     return TextField(
@@ -144,6 +181,7 @@ class _InputPageState extends State<InputPage> {
     return ListTile(
       title: Text('Nombre es: $_nombre'),
       subtitle: Text('Email: $_email'),
+      trailing: Text(_opcionesSeleccionada),
     );
   }
 }
