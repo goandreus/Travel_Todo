@@ -9,7 +9,7 @@ class _ListPageState extends State<ListPage> {
 
 ScrollController _scrollController = ScrollController();
 
-  List<int> _ListaNumeros = List();
+  List<int> _listaNumeros = List();
   int _ultimoItem = 0;
 
   @override
@@ -38,10 +38,10 @@ ScrollController _scrollController = ScrollController();
   Widget _crearLista(){
     return ListView.builder(
       controller: _scrollController,
-      itemCount: _ListaNumeros.length,
+      itemCount: _listaNumeros.length,
       itemBuilder: (BuildContext context, int index){
         
-        final imagen = _ListaNumeros[index];
+        final imagen = _listaNumeros[index];
         return FadeInImage(
           image: NetworkImage('https://picsum.photos/500/300/?image=$imagen'),
           placeholder: AssetImage('assets/plane_loading.gif'),
@@ -53,7 +53,7 @@ ScrollController _scrollController = ScrollController();
   void _agregar10(){
     for (var i=1; i<10; i ++){
       _ultimoItem++;
-      _ListaNumeros.add(_ultimoItem);
+      _listaNumeros.add(_ultimoItem);
     }
     setState(() {
       
