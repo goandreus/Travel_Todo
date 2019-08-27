@@ -50,18 +50,32 @@ ScrollController _scrollController = ScrollController();
   }
 
   Widget _crearLista(){
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _listaNumeros.length,
-      itemBuilder: (BuildContext context, int index){
-        
-        final imagen = _listaNumeros[index];
-        return FadeInImage(
-          image: NetworkImage('https://picsum.photos/500/300/?image=$imagen'),
-          placeholder: AssetImage('assets/plane_loading.gif'),
-        );
-      },
+    return RefreshIndicator(
+        onRefresh: obtenerPagina1,
+
+        child: ListView.builder(
+        controller: _scrollController,
+        itemCount: _listaNumeros.length,
+        itemBuilder: (BuildContext context, int index){
+          
+          final imagen = _listaNumeros[index];
+          return FadeInImage(
+            image: NetworkImage('https://picsum.photos/500/300/?image=$imagen'),
+            placeholder: AssetImage('assets/plane_loading.gif'),
+          );
+        },
+      ),
     );
+  }
+  Future<Null> obtenerPagina1() async{
+    final duration = Duration(seconds: 2);
+     Timer(duration,(){
+      _listaNumeros.clear();
+      _ultimoItem++;
+      _agregar10();
+    });
+
+    return Future.delayed(duration);
   }
 
   void _agregar10(){
