@@ -19,14 +19,14 @@ class HomePage extends StatelessWidget {
       initialData: [],
       builder: (context, AsyncSnapshot<List<dynamic>> snapshot){
         return ListView(
-        children: _ListaItems(snapshot.data, context),
+        children: _listaItems(snapshot.data, context),
       );
       },
     );
 
   }
 
-    List<Widget> _ListaItems(List<dynamic> data, BuildContext context){
+    List<Widget> _listaItems(List<dynamic> data, BuildContext context){
       final List<Widget> opciones = [];
       data.forEach((opt){
         final widgetTemp = ListTile(
